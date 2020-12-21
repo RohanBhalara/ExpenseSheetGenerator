@@ -1,0 +1,115 @@
+<div class="container">
+    <div class="row text-center">
+        <div class="col-md-12">
+            <h1>Expense Sheet Generator</h1>
+        </div>
+    </div>
+
+    <div class="row tableDiv">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12"> <h4>Main Entry</h4> </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 text-center"> <input type="text" [(ngModel)]="home" placeholder="Home" class="form-control"/> </div>
+                    <div class="col-md-3 text-center"> <input type="text" [(ngModel)]="purposeOfVisit" placeholder="Purpose of Visit" class="form-control"/> </div>
+                    <div class="col-md-3 text-center"> <input type="text" [(ngModel)]="modeOfConveyance" placeholder="Mode of Conveyance" class="form-control"/> </div>
+                    <div class="col-md-3 text-center"> <input type="text" [(ngModel)]="vehicleNo" placeholder="Vehicle Reg. No." class="form-control"/> </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12"> <h4>Sub Entry</h4> </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-info" (click)="DecrementDate()">-</button>
+                        <input type="date" style="margin-left: 10px;margin-right: 10px;width: 60%;" [(ngModel)]="date" class="inputDate"/>
+                        <button class="btn btn-info" (click)="IncrementDate()">+</button>
+                    </div>
+                    <div class="col-md-6 text-center"> <input type="text" [(ngModel)]="locations" placeholder="Locations" class="textBox form-control"/> </div>
+                    <div class="col-md-2 text-center"> <input type="reset" class="btn btn-danger" (click)="Reset()" value="Reset" /> </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center" *ngIf="selectedIndex === null">
+                        <button class="btn btn-success addButton" (click)="AddDetail()">Add</button>
+                    </div>
+                    <div class="col-md-12 text-center" *ngIf="selectedIndex !== null">
+                        <button class="btn btn-warning editButton" (click)="EditDetail()">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row tableDiv">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="row customRow" *ngFor = "let data of dataArray; let i = index">
+                    <div class="col-md-2 text-center"> {{ data.date | date : "dd/MM/y" }} </div>
+                    <div class="col-md-2 text-center"> {{ data.home }} </div>
+                    <div class="col-md-2 text-center"> {{ data.purposeOfVisit }} </div>
+                    <div class="col-md-2 text-center"> {{ data.modeOfConveyance }} </div>
+                    <div class="col-md-1 text-center"> {{ data.vehicleNo }} </div>
+
+                    <div class="col-md-1 text-center"> <input type="button" class="btn btn-warning" (click)="SelectDetail(i)" value="Edit" /> </div>
+                    <div class="col-md-2 text-center"> <input type="button" class="btn btn-danger" (click)="DeleteDetail(i)" value="Remove" /> </div>
+                    <div class="col-md-12 text-center"> {{ data.locations }} </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row tableDiv">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="row customRow" *ngFor = "let data of dataArray; let i = index">
+                    <div class="container">
+                        <div class="row customRowInner">
+                            <div class="col-md-2 text-center"> {{ data.date | date : "dd/MM/y" }} </div>
+                            <div class="col-md-2 text-center"> {{ data.purposeOfVisit }} </div>
+                            <div class="col-md-2 text-center"> {{ data.modeOfConveyance }} </div>
+                            <div class="col-md-2 text-center"> {{ data.vehicleNo }} </div>
+                            <div class="col-md-4 text-center"> {{ data.home }} </div>
+                        </div>
+                        <div class="row customRowInner" *ngFor = "let element of data.locations.split(','); let i = index">
+                            <div class="col-md-2 text-center"> {{ data.date | date : "dd/MM/y" }} </div>
+                            <div class="col-md-2 text-center"> {{ data.purposeOfVisit }} </div>
+                            <div class="col-md-2 text-center"> {{ data.modeOfConveyance }} </div>
+                            <div class="col-md-2 text-center"> {{ data.vehicleNo }} </div>
+                            <div class="col-md-4 text-center"> {{ element }} </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="tableDetail">
+                <tr *ngFor = "let data of dataArray; let i = index">
+                    <td>
+                        <table class="tableDetail">
+                            <tr>
+                                <td class="tableDetail">{{ data.date | date : "dd/MM/y" }}</td>
+                                <td class="tableDetail">{{ data.purposeOfVisit }}</td>
+                                <td class="tableDetail">{{ data.modeOfConveyance }}</td>
+                                <td class="tableDetail">{{ data.vehicleNo }}</td>
+                                <td class="tableDetail">{{ data.home }}</td>
+                            </tr>
+                            <tr *ngFor="let element of data.locations.split(','); let i for index">
+                                <td class="tableDetail">{{ data.date | date : "dd/MM/y" }}</td>
+                                <td class="tableDetail">{{ data.purposeOfVisit }}</td>
+                                <td class="tableDetail">{{ data.modeOfConveyance }}</td>
+                                <td class="tableDetail">{{ data.vehicleNo }}</td>
+                                <td class="tableDetail">{{ element }}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>

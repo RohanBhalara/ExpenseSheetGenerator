@@ -1,0 +1,56 @@
+table{
+    width: 100%;
+}
+tr{
+    width: 100%;
+}
+td{
+    width: 14%;
+}
+div{
+    color: white;
+}
+.tableDiv{
+    background-color: black;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.row{
+    padding: 10px;
+}
+.textBox{
+    width: 100%;
+}
+.addButton, .editButton{
+    width: 30%;
+}
+.cancelButton{
+    width: 10%;
+}
+.customRow{
+    width: 100%;
+    background-color: rgb(6, 142, 160);
+    margin: 10px 0 10px 0;
+}
+.customRowInner{
+    background-color: rgb(1, 29, 88);
+    margin: 10px ;
+}
+.tableDetail{
+    border: 2px solid black;
+    text-align: center;
+    background-color: white;
+    color: black;
+}
+.inputDate{
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
